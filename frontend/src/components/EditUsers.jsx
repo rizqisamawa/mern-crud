@@ -23,7 +23,7 @@ const EditUsers = () => {
   const updateHandeler = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch("http://localhost:5000/users/${id}", {
+      await axios.patch(`http://localhost:5000/users/${id}`, {
         name,
         email,
         gender,
