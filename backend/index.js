@@ -8,6 +8,7 @@ const app = express();
 app.use(cors()); // adding middelware
 app.use(express.json()); // recieve request format json
 app.use(FileUpload()); // adding fileupload anything type file
+app.use(express.static("public"));
 
 app.use(UserRouter);
 
