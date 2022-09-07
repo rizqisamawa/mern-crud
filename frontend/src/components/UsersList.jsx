@@ -23,46 +23,45 @@ const UsersList = () => {
     }
   };
   return (
-    <div className="columns mt-5 is-centered">
-      <div className="column is-half">
-        <Link to={"add"} className="button is-success">
-          Add Users
-        </Link>
-        <table className="table is-striped is-fullwidth">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Gender</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, i) => (
-              <tr key={user.id}>
-                <td>{i + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.gender}</td>
-                <td>
-                  <Link
-                    to={`edit/${user.id}`}
-                    className="button is-small is-info"
-                  >
-                    E
-                  </Link>
-                  <button
-                    onClick={() => deleteUsers(user.id)}
-                    className="button is-small is-danger"
-                  >
-                    D
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="container mt-5">
+      <Link to={"add"} className="button is-success">
+        Add Users
+      </Link>
+      <div className="column is-multiline mt-2">
+        {users.map((user) => (
+          <div className="column is-one-quarter" key={user.id}>
+            <div className="card">
+              <div className="card-image">
+                <figure className="image is-square">
+                  <img src={user.url} alt={user.image} />
+                </figure>
+              </div>
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-content">
+                    <p className="title is-4">{user.name}</p>
+                  </div>
+                </div>
+              </div>
+
+              <footer className="card-footer">
+                <Link
+                  to={`edit/${user.id}`}
+                  className="card-footer-item button is-link is-outlined"
+                >
+                  Edit
+                </Link>
+                &nbsp;
+                <a
+                  onClick={() => deleteUsers(user.id)}
+                  className="card-footer-item button is-danger is-outlined"
+                >
+                  Delete
+                </a>
+              </footer>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
