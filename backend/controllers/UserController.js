@@ -76,10 +76,10 @@ export const updateUsers = async (req, res) => {
 
   if (!user) return res.status(404).json({ msg: "Data Not Found" });
 
-  let fileName;
+  let fileName = "";
 
   if (req.files === null) {
-    fileName = users.image;
+    fileName = user.image;
   } else {
     const file = req.files.file;
     const fileSize = file.data.length;
@@ -116,7 +116,9 @@ export const updateUsers = async (req, res) => {
         url: url,
       },
       {
-        id: req.params.id,
+        where: {
+          id: req.params.id,
+        },
       }
     );
     res.status(200).json({ msg: "Update Users Successfully" });
