@@ -27,7 +27,7 @@ const UsersList = () => {
       <Link to={"add"} className="button is-success">
         Add Users
       </Link>
-      <div className="column is-multiline mt-2">
+      <div className="columns is-multiline mt-2">
         {users.map((user) => (
           <div className="column is-one-quarter" key={user.id}>
             <div className="card">
